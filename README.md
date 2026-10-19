@@ -2,9 +2,9 @@
 
 ---
 
-# rnaseq-provenance-audit
+# rnaseq-provenance-check
 
-A small, dependency-free audit for a finished bulk RNA-seq run. It answers the questions a reviewer asks before trusting a count matrix: are the samples the same everywhere, are the raw files the ones that were processed, was one reference used throughout, is every tool pinned, and do any samples fail QC?
+A small, dependency-free check for a finished bulk RNA-seq run. It answers the questions a reviewer asks before trusting a count matrix: are the samples the same everywhere, are the raw files the ones that were processed, was one reference used throughout, is every tool pinned, and do any samples fail QC?
 
 ## What it checks
 
@@ -22,7 +22,7 @@ Every report also records the SHA-256 of each input, so a later reader can confi
 
 ```bash
 python make_demo.py          # writes the synthetic demo run to examples/demo_run
-python main.py               # audits it; exit code 1 when errors are found
+python main.py               # checks it; exit code 1 when errors are found
 python main.py RUN_DIR --json report.json
 python -m pytest -q          # 7 tests
 ```
@@ -39,4 +39,4 @@ WARNING [qc] S4: mapping rate 58% below 70%
 
 ## Where it fits
 
-In a Nextflow or Snakemake pipeline the same manifest can be generated from the workflow's own trace and parameter files, and the audit run as a final gate before results are released.
+In a Nextflow or Snakemake pipeline the same manifest can be generated from the workflow's own trace and parameter files, and the check run as a final gate before results are released.

@@ -1,4 +1,4 @@
-"""Provenance and consistency audit for a finished bulk RNA-seq run.
+"""Provenance and consistency check for a finished bulk RNA-seq run.
 
 Reads a run manifest (JSON), the sample sheet and the gene-count matrix, and reports
 findings in five areas: sample identity, file integrity, reference consistency,

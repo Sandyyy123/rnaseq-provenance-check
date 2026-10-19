@@ -1,4 +1,4 @@
-"""Run the provenance audit on a run directory and print the findings.
+"""Run the provenance check on a run directory and print the findings.
 
 Usage: python main.py [RUN_DIR] [--json OUT.json]
 Default RUN_DIR is the synthetic demo in examples/demo_run.
