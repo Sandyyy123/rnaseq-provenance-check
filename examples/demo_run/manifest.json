@@ -1,0 +1,82 @@
+{
+  "run_id": "demo-bulk-rnaseq-001",
+  "sample_sheet": "sample_sheet.csv",
+  "counts": "counts.csv",
+  "fastq": [
+    {
+      "sample_id": "S1",
+      "path": "fastq/S1_R1.fastq",
+      "sha256": "2ecadba786bb152c71569f9c04f5b6d4cdf81eedf3113a1e72ed2de9de226f53"
+    },
+    {
+      "sample_id": "S2",
+      "path": "fastq/S2_R1.fastq",
+      "sha256": "0c566d3769b552d501e2abe11140fe15c9b0f9209269f3d1ef500ff117174dba"
+    },
+    {
+      "sample_id": "S3",
+      "path": "fastq/S3_R1.fastq",
+      "sha256": "78ddc8514ffbb5e573f01499da513884793ac760294aef9dae53183bd831ba5a"
+    },
+    {
+      "sample_id": "S4",
+      "path": "fastq/S4_R1.fastq",
+      "sha256": "a1cbd7e13ebd11f32edc79a6b6e9255059060d4a47e43146df510629ad6e09b9"
+    },
+    {
+      "sample_id": "S5",
+      "path": "fastq/S5_R1.fastq",
+      "sha256": "1bed4fe8374ad66e21f6329c5257ce44fb4eaa2b594a87e6b9bf9e3e32223579"
+    }
+  ],
+  "steps": [
+    {
+      "name": "align",
+      "tool": "STAR",
+      "version": "2.7.11b",
+      "genome_build": "GRCh38",
+      "annotation": "GENCODE v44",
+      "container_digest": "sha256:1111aaaa"
+    },
+    {
+      "name": "quantify",
+      "tool": "featureCounts",
+      "version": "2.0.6",
+      "genome_build": "GRCh38",
+      "annotation": "GENCODE v43",
+      "container_digest": "sha256:2222bbbb"
+    },
+    {
+      "name": "qc_report",
+      "tool": "MultiQC",
+      "version": "latest"
+    }
+  ],
+  "qc_thresholds": {
+    "min_mapping_rate": 0.7,
+    "max_rrna_fraction": 0.1,
+    "min_library_fraction_of_median": 0.5
+  },
+  "qc_metrics": {
+    "S1": {
+      "mapping_rate": 0.91,
+      "rrna_fraction": 0.03
+    },
+    "S2": {
+      "mapping_rate": 0.89,
+      "rrna_fraction": 0.04
+    },
+    "S3": {
+      "mapping_rate": 0.9,
+      "rrna_fraction": 0.02
+    },
+    "S4": {
+      "mapping_rate": 0.58,
+      "rrna_fraction": 0.14
+    },
+    "S5": {
+      "mapping_rate": 0.88,
+      "rrna_fraction": 0.05
+    }
+  }
+}
